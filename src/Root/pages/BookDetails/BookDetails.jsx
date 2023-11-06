@@ -5,7 +5,7 @@ const BookDetails = ({book}) => {
     console.log(image)
     return (
         <div>
-            <img src={image} alt="" />
+            
         </div>
     );
 };
