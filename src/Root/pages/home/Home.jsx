@@ -3,6 +3,7 @@ import Banner from './Banner';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Footer from '../../components/Footer';
 
 const Home = () => {
     useEffect(() => {
@@ -15,6 +16,7 @@ const Home = () => {
             <div data-aos="flip-left">
             <img src="https://i.ibb.co/NKLrRTn/banner1.jpg" alt="" />
             </div>
+            <Footer></Footer>
         </div>
     );
 };
