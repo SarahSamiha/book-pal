@@ -1,22 +1,22 @@
-import { useLoaderData } from 'react-router-dom';
 import Banner from './Banner';
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Footer from '../../components/Footer';
+import Categories from './Categories';
+// import ErrorPage from '../ErrorPage/ErrorPage';
 
 const Home = () => {
     useEffect(() => {
         AOS.init();
     }, [])
-    const books = useLoaderData();
+
     return (
         <div>
             <Banner></Banner>
-            <div data-aos="flip-left">
-            <img src="https://i.ibb.co/NKLrRTn/banner1.jpg" alt="" />
-            </div>
+            <Categories></Categories>
             <Footer></Footer>
+            
         </div>
     );
 };

@@ -5,17 +5,18 @@ import Home from "../Root/pages/home/Home";
 import Root from "../Root/Root";
 import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
-// import BookDetails from "../Root/pages/BookDetails/BookDetails";
+import ErrorPage from "../Root/pages/ErrorPage/ErrorPage";
+
 
   const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('/books.json')
             },
             {
               path: '/login',
