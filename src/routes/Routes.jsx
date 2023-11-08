@@ -12,9 +12,10 @@ import BooksByCategory from "../Root/pages/BooksByCategory/BooksByCategory";
 import BookDetails from "../Root/pages/BookDetails/BookDetails";
 import BorrowedBooks from "../Root/pages/BorrowedBooks/BorrowedBooks";
 import AllBooks from "../Root/pages/AllBooks/AllBooks";
+import UpdateBook from "../Root/pages/UpdateBook/UpdateBook";
 
 // https://book-pal-server.vercel.app****
-// book-pal-server.vercel.app**** //
+//http://localhost:5000**** //
 
 
 
@@ -31,22 +32,27 @@ import AllBooks from "../Root/pages/AllBooks/AllBooks";
             {
                 path: "/books",
                 element: <PrivateRoutes><AllBooks></AllBooks></PrivateRoutes>,
-                loader: () => fetch('https://book-pal-server.vercel.app/books')
+                loader: () => fetch('http://localhost:5000/books')
             },
             {
               path: "/addBook",
               element: <PrivateRoutes><AddBook></AddBook></PrivateRoutes>
             },
             {
+              path: "/updateBook/:id",
+              element: <PrivateRoutes><UpdateBook></UpdateBook></PrivateRoutes>,
+              loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+            },
+            {
               path: "/categories/:id",
               element: <BooksByCategory></BooksByCategory>,
-              loader: ({params}) => fetch(`https://book-pal-server.vercel.app/categories/${params.id}`)
+              loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
               
             },
             {
               path: "/books/:id",
               element: <PrivateRoutes><BookDetails></BookDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`https://book-pal-server.vercel.app/books/${params.id}`)
+              loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
               
             },
             {

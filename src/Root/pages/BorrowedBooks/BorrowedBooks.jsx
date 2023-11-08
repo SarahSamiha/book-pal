@@ -10,7 +10,7 @@ const BorrowedBooks = () => {
     console.log(user.email)
 
     useEffect(() => {
-        axios.get(`https://book-pal-server.vercel.app/borrowedBooks?email=${user?.email}`)
+        axios.get(`http://localhost:5000/borrowedBooks?email=${user?.email}`)
         .then(res => {
             console.log(res.data)
             setBorrowedBooks(res.data);

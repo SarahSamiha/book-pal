@@ -10,7 +10,7 @@ const BooksByCategory = () => {
     const { categoryName, image1, image2, image3 } = category;
     const [booksByCategory, setBooksByCategory] = useState([]);
 
-    const url = `https://book-pal-server.vercel.app/books?categoryName=${category?.categoryName}`;
+    const url = `http://localhost:5000/books?categoryName=${category?.categoryName}`;
     useEffect(() => {
         axios.get(url)
             .then(res => {

@@ -31,7 +31,7 @@ const BookDetails = () => {
                 categoryName,
             }
 
-            axios.post('https://book-pal-server.vercel.app/borrowedBooks', newBorrowedBook)
+            axios.post('http://localhost:5000/borrowedBooks', newBorrowedBook)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {

@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import BookCard from "../../components/BookCard";
 import Title from "../../components/Title";
+import AllBooksCard from "./AllBooksCard";
 
 
 const AllBooks = () => {
@@ -13,10 +13,10 @@ const AllBooks = () => {
             ></Title>
             <div className="grid grid-cols-4 gap-8">
             {
-                books.map(book => <BookCard
+                books.map(book => <AllBooksCard
                 key={book._id}
                 book={book}
-                ></BookCard>)
+                ></AllBooksCard>)
             }
             </div>
         </div>
