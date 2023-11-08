@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Rating = ({ id, rating }) => {
     return (
-        <div className="rating rating-xs">
+        <div className="rating rating-md">
             {
                 rating == 1 ?
                     <input type="radio" disabled name={`rating-${id}`} className="mask mask-star-2 bg-orange-400" checked />

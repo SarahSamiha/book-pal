@@ -22,7 +22,7 @@ const Navbar = ({ theme, setTheme }) => {
             <>
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/addBook'>Add Book</NavLink></li>
-                <li><NavLink to='/allBooks'>All Books</NavLink></li>
+                <li><NavLink to='/books'>All Books</NavLink></li>
                 <li><NavLink to='/borrowedBooks'>Borrowed Books</NavLink></li>
             </>
         }

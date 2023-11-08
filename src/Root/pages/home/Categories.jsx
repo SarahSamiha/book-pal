@@ -7,7 +7,7 @@ import Title from "../../components/Title";
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://book-pal-server.vercel.app/categories')
             .then(res => {
                 const data = res.data;
                 setCategories(data);

@@ -10,7 +10,7 @@ const BorrowedBooksCard = ({book}) => {
             </figure>
             <div className="card-body items-center text-center space-y-1">
                 <h2 className="card-title text-xl font-bold">{bookName}</h2>
-                <h2 className="text-lg font-semibold text-slate-600">{authorName}</h2>
+                <h2 className="text-lg font-semibold text-slate-600 flex-1">{authorName}</h2>
                 <div>category: {categoryName}</div>
                 <div className="card-actions w-full">
                     <Link className='w-full' to={`/books/${bookId}`}><button className="btn btn-primary btn-block">Details</button></Link>
