@@ -32,7 +32,7 @@ import UpdateBook from "../Root/pages/UpdateBook/UpdateBook";
             {
                 path: "/books",
                 element: <PrivateRoutes><AllBooks></AllBooks></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/books')
+                loader: () => fetch('https://book-pal-server.vercel.app/books')
             },
             {
               path: "/addBook",
@@ -41,18 +41,18 @@ import UpdateBook from "../Root/pages/UpdateBook/UpdateBook";
             {
               path: "/updateBook/:id",
               element: <PrivateRoutes><UpdateBook></UpdateBook></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+              loader: ({params}) => fetch(`https://book-pal-server.vercel.app/books/${params.id}`)
             },
             {
               path: "/categories/:id",
               element: <BooksByCategory></BooksByCategory>,
-              loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+              loader: ({params}) => fetch(`https://book-pal-server.vercel.app/categories/${params.id}`)
               
             },
             {
               path: "/books/:id",
               element: <PrivateRoutes><BookDetails></BookDetails></PrivateRoutes>,
-              loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+              loader: ({params}) => fetch(`https://book-pal-server.vercel.app/books/${params.id}`)
               
             },
             {

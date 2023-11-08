@@ -19,7 +19,7 @@ const AddBook = () => {
 
         const newBook = {bookName, authorName, categoryName, totalPages, demoReading, quantityAvailable, rating, image, description};
         
-        axios.post('http://localhost:5000/books', newBook)
+        axios.post('https://book-pal-server.vercel.app/books', newBook)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
