@@ -3,7 +3,7 @@ import Rating from './Rating';
 import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
-    console.log(book)
+    // console.log(book)
     const { _id, bookName, authorName, rating, categoryName, image } = book;
     return (
         <div className="card bg-base-100 shadow-xl">

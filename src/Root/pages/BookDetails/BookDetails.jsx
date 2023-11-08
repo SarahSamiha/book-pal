@@ -1,11 +1,57 @@
 import { useLoaderData } from "react-router-dom";
 import Rating from "../../components/Rating";
 import TextBreaker from "../../components/TextBreaker";
+import { useContext} from "react";
+import { AuthContext } from "../../../auth/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const BookDetails = () => {
     const book = useLoaderData();
+    const { user } = useContext(AuthContext);
+    const { displayName, email } = user;
     const { _id, bookName, authorName, categoryName, totalPages, demoReading, quantityAvailable, rating, image, description } = book;
+
+    // const [returnDate, setReturnDate] = useState('');
+
+    // const handleDateInput = e => {
+    //     e.preventDefault();
+    //     setReturnDate(e.target.value);
+    // }
+    const handleSubmit = () => {
+        // if (returnDate) {
+            const newBorrowedBook = {
+                bookId: _id,
+                bookName,
+                userName: displayName,
+                email,
+                image,
+                authorName,
+                categoryName,
+            }
+
+            axios.post('http://localhost:5000/borrowedBooks', newBorrowedBook)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Book Added Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+                // setReturnDate('')
+        // }
+
+
+
+    }
 
     return (
         <div className="bg-base-100">
@@ -27,28 +73,32 @@ const BookDetails = () => {
                         <p>Available: {quantityAvailable}</p>
                     </div>
                     <div>
-                        {description.split('\n').map((text, index) => <TextBreaker
+                        {description?.split('\n').map((text, index) => <TextBreaker
                             key={index}
                             text={text}
                         ></TextBreaker>)}
                     </div>
                     <div className="py-12 ">
                         <button className="btn btn-outline hover:text-white btn-primary btn-block ">Want to Read</button>
+                        <button onClick={handleSubmit} className="btn btn-primary px-12 btn-block text-white mt-6">Borrow</button>
 
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn btn-primary px-12 btn-block text-white mt-6" onClick={() => document.getElementById('my_modal_5').showModal()}>Borrow</button>
-                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                            <div className="modal-box">
-                                <h3 className="font-bold text-lg">Hello!</h3>
-                                <p className="py-4">Press ESC key or click the button below to close</p>
-                                <div className="modal-action">
-                                    <form method="dialog">
-                                        {/* if there is a button in form, it will close the modal */}
-                                        <button className="btn">Close</button>
-                                    </form>
-                                </div>
+                        {/* <button className="btn btn-primary px-12 btn-block text-white mt-6" onClick={() => document.getElementById('my_modal_5').showModal()}>Borrow</button> */}
+
+
+                        {/* <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box grid">
+                                <h3 className="font-bold text-xl text-secondary pb-6">{bookName}</h3>
+                                <form method="dialog">
+                                    <label className="label">
+                                        <span className="label-text">Return Date</span>
+                                    </label>
+                                    <input onChange={handleDateInput} type="date" name="returnDate" className="input input-bordered w-full max-w-xs" />
+                                    <input className="btn btn-primary px-12 btn-block text-white m-3" type="submit" value="Confirm" required />
+                                </form>
                             </div>
-                        </dialog>
+                        </dialog> */}
+
                     </div>
 
                 </div>
