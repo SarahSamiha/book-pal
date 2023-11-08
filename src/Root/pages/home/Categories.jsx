@@ -17,12 +17,12 @@ const Categories = () => {
             })
     }, [])
     return (
-        <div>
+        <div className="max-w-sm md:max-w-2xl lg:max-w-6xl mx-auto my-10">
             <Title
                 title={"Browse Categories"}
                 subTitle={"Explore our wide range of categories, from mysteries to science fiction, romance, and horror. Find your next captivating read and embark on a literary journey with us."}
             ></Title>
-            
+
             <div className="grid grid-cols-4 gap-8">
                 {
                     categories.map(category => <CategoryCard

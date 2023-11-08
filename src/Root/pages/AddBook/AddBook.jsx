@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 
 const AddBook = () => {
@@ -21,6 +22,15 @@ const AddBook = () => {
         axios.post('http://localhost:5000/books', newBook)
                 .then(res => {
                     console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Book Added Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                        form.reset();
+                    }
                 })
                 .catch(error => {
                     console.log(error);

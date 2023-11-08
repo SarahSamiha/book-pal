@@ -1,10 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import userDefaultPic from '../../assets/user.png';
 import logoLight from '../../assets/BookPalLogoLightTheme.png'
+import logoDark from '../../assets/BookPalLogoDarkTheme.png'
 import { AuthContext } from '../../auth/AuthProvider';
 import { useContext } from 'react';
+import { BiSolidMoon, BiMoon } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({ theme, setTheme }) => {
     const { user, logOut } = useContext(AuthContext);
     console.log(user);
 
@@ -48,8 +51,12 @@ const Navbar = () => {
                 </div>
                 <Link to='/'>
                     <div className='flex items-center'>
-                        <img className='h-20 w-20' src={logoLight} alt="" />
-                        <h3 className='text-4xl font-bold text-black'>B<span className='text-[#4B6175]'>oo</span>k<span className='text-[#FF5757]'>Pal</span></h3>
+                        { theme?
+                            <img className='h-20 w-20' src={logoLight} alt="" />
+                            :
+                            <img className='h-20 w-20' src={logoDark} alt="" />
+                        }
+                        <h3 className='text-4xl font-bold text-neutral'>B<span className='text-secondary'>oo</span>k<span className='text-primary'>Pal</span></h3>
                     </div>
                 </Link>
 
@@ -65,7 +72,7 @@ const Navbar = () => {
                         <div className="flex flex-row-reverse md:flex-row gap-2 items-center">
                             <p className="absolute md:static invisible md:visible text-lg text-darkGreen font-semibold">{user.displayName}</p>
                             {user.photoURL ?
-                                <img className="w-[40px] h-[40px] rounded-full" src={`${user.photoURL}`} referrerPolicy="no-referrer" alt=""  />
+                                <img className="w-[40px] h-[40px] rounded-full" src={`${user.photoURL}`} referrerPolicy="no-referrer" alt="" />
                                 :
                                 <img className="w-[40px] h-[40px] rounded-full" src={userDefaultPic} alt="" />
                             }
@@ -77,9 +84,21 @@ const Navbar = () => {
                             <Link to='/signUp' className="btn btn-ghost">Sign UP</Link>
                         </div>
                 }
+                <span onClick={() => setTheme(!theme)}>
+                    {
+                        theme ?
+                            <BiSolidMoon className='w-10 text-3xl'></BiSolidMoon>
+                            :
+                            <BiMoon className='w-10 text-3xl'></BiMoon>
+                    }
+                </span>
             </div>
         </div>
     );
 };
+Navbar.propTypes = {
+    theme: PropTypes.bool.isRequired,
+    setTheme: PropTypes.func.isRequired,
+}
 
 export default Navbar;

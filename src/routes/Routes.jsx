@@ -7,6 +7,8 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import ErrorPage from "../Root/pages/ErrorPage/ErrorPage";
 import AddBook from "../Root/pages/AddBook/AddBook";
+import PrivateRoutes from "./PrivateRoutes";
+import BooksByCategory from "../Root/pages/BooksByCategory/BooksByCategory";
 
 
   const router = createBrowserRouter([
@@ -21,7 +23,13 @@ import AddBook from "../Root/pages/AddBook/AddBook";
             },
             {
               path: "/addBook",
-              element: <AddBook></AddBook>
+              element: <PrivateRoutes><AddBook></AddBook></PrivateRoutes>
+            },
+            {
+              path: "/categories/:id",
+              element: <BooksByCategory></BooksByCategory>,
+              loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+              
             },
             {
               path: '/login',

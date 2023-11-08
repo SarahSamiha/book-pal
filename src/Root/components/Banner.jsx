@@ -3,8 +3,9 @@ import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { TypeAnimation } from 'react-type-animation';
+import PropTypes from 'prop-types';
 
-const Banner = () => {
+const Banner = ({ image1, image2, image3, message1, message2, message3 }) => {
 
     return (
         <Swiper className='h-[500px]'
@@ -15,27 +16,27 @@ const Banner = () => {
             autoplay={{ delay: 7000 }}
             // pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
         >
             {/* slide 1 */}
             <SwiperSlide>
-                <div className="hero h-full" style={{ backgroundImage: 'url(https://i.ibb.co/NKLrRTn/banner1.jpg)' }}>
+                <div className="hero h-full" style={{ backgroundImage: `url(${image1})` }}>
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="w-1/2 flex items-center justify-center">
                             <h1 className="mb-5 text-5xl font-bold">
                                 <TypeAnimation
                                     sequence={[
-                                        'Discover the World of Books, Your Gateway to Knowledge and Imagination'
+                                        `${message1}`
                                     ]}
-                                    style={{width: '700px', textAlign:'center', display: 'inline-block',  }}                                   
+                                    style={{ width: '700px', textAlign: 'center', display: 'inline-block', }}
                                     speed={10}
                                     cursor={false}
                                 />
                             </h1>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -43,21 +44,21 @@ const Banner = () => {
 
             {/* slide 2 */}
             <SwiperSlide>
-                <div className="hero h-full" style={{ backgroundImage: 'url(https://i.ibb.co/PrkHFRz/banner2.jpg)' }}>
+                <div className="hero h-full" style={{ backgroundImage: `url(${image2})` }}>
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="w-1/2 flex items-center justify-center">
                             <h1 className="mb-5 text-5xl font-bold">
-                            <TypeAnimation
+                                <TypeAnimation
                                     sequence={[7000,
-                                        'Explore, Borrow, and Dive into Endless Stories at Your Fingertips'
-                                    ]}                                   
-                                    style={{width: '700px', textAlign:'center', display: 'inline-block',  }}                                   
+                                        `${message2}`
+                                    ]}
+                                    style={{ width: '700px', textAlign: 'center', display: 'inline-block', }}
                                     speed={10}
                                     cursor={false}
                                 />
                             </h1>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -65,22 +66,22 @@ const Banner = () => {
 
             {/* slide 3 */}
             <SwiperSlide>
-                <div className="hero h-full" style={{ backgroundImage: 'url(https://i.ibb.co/vJRDdg1/banner3.jpg)' }}>
+                <div className="hero h-full" style={{ backgroundImage: `url(${image3})` }}>
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="w-1/2 flex items-center justify-center">
                             <h1 className="mb-5 text-5xl font-bold">
-                            <TypeAnimation
+                                <TypeAnimation
                                     sequence={[14000,
-                                        'Your Library, Your Universe of Learning, Adventure, and Inspiration'
-                                    ]}                                   
-                                    style={{width: '700px', textAlign:'center', display: 'inline-block',  }}                                   
+                                        `${message3}`
+                                    ]}
+                                    style={{ width: '700px', textAlign: 'center', display: 'inline-block', }}
                                     speed={10}
                                     cursor={false}
                                 />
-                                
+
                             </h1>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -89,6 +90,15 @@ const Banner = () => {
         </Swiper>
     );
 };
+
+Banner.propTypes = {
+    image1: PropTypes.string,
+    image2: PropTypes.string,
+    image3: PropTypes.string,
+    message1: PropTypes.string,
+    message2: PropTypes.string,
+    message3: PropTypes.string,
+}
 
 export default Banner;
 
