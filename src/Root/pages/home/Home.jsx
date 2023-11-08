@@ -3,7 +3,6 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Categories from './Categories';
-// import ErrorPage from '../ErrorPage/ErrorPage';
 
 const Home = () => {
     const image1 = 'https://i.ibb.co/NKLrRTn/banner1.jpg';

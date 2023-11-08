@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
     console.log(book)
@@ -22,7 +23,7 @@ const BookCard = ({ book }) => {
                     <div className='badge badge-outline' >{categoryName}</div>
                 </div>
                 <div className="card-actions w-full">
-                    <button className="btn btn-primary btn-block">Details</button>
+                    <Link className='w-full' to={`/books/${_id}`}><button className="btn btn-primary btn-block">Details</button></Link>
                 </div>
             </div>
         </div>

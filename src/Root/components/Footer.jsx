@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import logoLight from '../../assets/BookPalLogoLightTheme.png'
 import logoDark from '../../assets/BookPalLogoDarkTheme.png'
 
-const Footer = (theme) => {
+const Footer = ({theme}) => {
     return (
         <div>
             <footer className="footer footer-center p-12 bg-neutral text-primary-content">

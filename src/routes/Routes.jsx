@@ -9,6 +9,7 @@ import ErrorPage from "../Root/pages/ErrorPage/ErrorPage";
 import AddBook from "../Root/pages/AddBook/AddBook";
 import PrivateRoutes from "./PrivateRoutes";
 import BooksByCategory from "../Root/pages/BooksByCategory/BooksByCategory";
+import BookDetails from "../Root/pages/BookDetails/BookDetails";
 
 
   const router = createBrowserRouter([
@@ -29,6 +30,12 @@ import BooksByCategory from "../Root/pages/BooksByCategory/BooksByCategory";
               path: "/categories/:id",
               element: <BooksByCategory></BooksByCategory>,
               loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+              
+            },
+            {
+              path: "/books/:id",
+              element: <BookDetails></BookDetails>,
+              loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
               
             },
             {
